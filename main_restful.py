@@ -1,6 +1,6 @@
 from flask import Flask, request
 from flask_restful import Resource, Api
-from habilidades import Habilidades
+from habilidades import Habilidades, Habilidade
 import json
 
 app = Flask(__name__)
@@ -45,9 +45,11 @@ class listaDesenvolvedores(Resource):
         desenvolvedores.append(dados)
         return {"Status": "id {} criado com sucesso".format(posicao)}
 
+
 api.add_resource(Desenvolvedor, '/<int:id>')
 api.add_resource(listaDesenvolvedores, '/')
 api.add_resource(Habilidades, '/habilidades')
+api.add_resource(Habilidade, '/habilidades/<int:id>')
 
 if __name__ == '__main__':
     app.run(debug=True)
